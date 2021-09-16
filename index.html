@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"
+      integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+
+    <ul id="people"></ul>
+
+    <input type="text" id="firstname">
+    <input type="text" id="lastname">
+    <input type="submit" id="add-person" value="Add">
+
+    <script>
+      var name = "Jack";
+      // alert(name);
+      var lastName = "Ma";
+      var fullName = name + " " + lastName;
+      // alert(fullName)
+      var person = {
+        name: "Mark",
+        lastName: "Sanders",
+        address: {
+          street: "Khorem street",
+          city: "Urgench",
+        },
+        age: 13,
+      };
+      var people = [
+        { firstName: "Jack", lastName: "Ma" },
+        { firstName: "Jack2", lastName: "Ma2" },
+        { firstName: "Jack3", lastName: "Ma3" },
+        { firstName: "Jack4", lastName: "Ma4" },
+      ];
+      // alert(person.age)
+      // alert(person.address.street)
+      // alert(people[0].firstName)
+
+      // for (i = 0; i < people.length; i++){
+      //     console.log(people[i].firstName);
+      // }
+
+    //   for (i = 0; i < people.length; i++) {
+    //     $("#people").append(
+    //       "<li>" + people[i].firstName + " " + people[i].lastName + "</li>"
+    //     );
+    //   }
+    $.each(people, function(index){
+        $("#people").append(
+          "<li>" + people[index].firstName + " " + people[index].lastName + "</li>"
+        );
+    });
+    $('#add-person').click(function(){
+        people.push({
+            firstName: $('#firstname').val(),
+            lastName: $('#lastname').val()
+        });
+    });
+    console.log(people);
+    </script>
+  </body>
+</html>
