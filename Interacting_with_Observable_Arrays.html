@@ -40,12 +40,14 @@
           <tr>
             <th>№</th>
             <th>Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody data-bind="foreach: users">
           <tr>
             <td data-bind="text: $index"></td>
             <td data-bind="text: name"></td>
+            <td><button class="btn btn-sm btn-danger" data-bind="click: $parent.removeUser">Remove</button></td>
           </tr>
         </tbody>
       </table>
@@ -69,6 +71,10 @@
             name: $("#add-user").val(),
           });
           $("#add-user").val('');
+        };
+
+        self.removeUser = function () {
+          self.users.remove(this);
         };
       }
 
