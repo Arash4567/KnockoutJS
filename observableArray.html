@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Observable Array</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"
+      integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>Users list</h1>
+    <ul data-bind="foreach: usersArray1">
+      <li data-bind="text: $data"></li>
+    </ul>
+    
+    <h1>Users Table</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: usersArray2">
+        <tr>
+          <!-- <td data-bind="text: $data.firstName"></td>
+          <td data-bind="text: $data.lastName"></td> -->
+          <td data-bind="text: firstName"></td>
+          <td data-bind="text: lastName"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      var usersArray1 = ko.observableArray(["Bob", "Mark", "Jack"]);
+      // console.log(usersArray1().length);
+      // console.log(usersArray1()[0]);
+      // usersArray1.push('Jen');
+      // console.log(usersArray1()[3]);
+      // console.log(usersArray1());
+
+      var usersArray2 = ko.observableArray([
+        { firstName: "Jack", lastName: "Ma" },
+        { firstName: "Jack2", lastName: "Ma2" },
+        { firstName: "Jack3", lastName: "Ma3" },
+        { firstName: "Jack4", lastName: "Ma4" },
+      ]);
+      
+      console.log(usersArray2());
+
+      ko.applyBindings()
+    </script>
+  </body>
+</html>

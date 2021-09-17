@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Observable Array</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css"
+      integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"
+      integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <!-- <h1>Users list</h1>
+    <ul data-bind="foreach: users">
+      <li>
+        <span data-bind="text: $index"></span>
+        <span data-bind="text: name"></span>
+      </li>
+    </ul> -->
+    <h1>Users Table</h1>
+    <div class="container">
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: users">
+          <tr>
+            <td data-bind="text: $index"></td>
+            <td data-bind="text: name"></td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="text" id="add-user" />
+      <button class="btn btn-success btn-sm" data-bind="click: addUser">
+        Add User
+      </button>
+    </div>
+
+    <script>
+      function viewModel() {
+        var self = this;
+
+        self.users = ko.observableArray([
+          { name: "Bob" },
+          { name: "Mark" },
+          { name: "Jack" },
+        ]);
+        self.addUser = function () {
+          self.users.push({
+            name: $("#add-user").val(),
+          });
+          $("#add-user").val('');
+        };
+      }
+
+      ko.applyBindings(new viewModel());
+    </script>
+  </body>
+</html>
